@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Processor - Treatmentor AI</title>
+</head>
+<script src="/treatmentor/main.js" defer></script>
+
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/scheduler">Scheduler</a>
+        <a href="/treatmentor">Treatmentor</a>
+    </div>
+
+    <div id="content">
+        <h1>Treatmentor</h1>
+
+        <div id="prompt-area">
+            <button id="file-button-json" onclick="document.getElementById('file-input-json').click()" >Upload Script.json</button>
+            <input id="file-input-json" type="file" accept=".json"></input>
+
+
+            <button id="file-button-txt" onclick="document.getElementById('file-input-txt').click()" >Upload treatment.txt</button>
+            <input id="file-input-txt" type="file"></input>
+
+            <button id="run-prompt">Run</button>
+        </div>
+
+        <p id="error"></p>
+    </div>
+
+    <div id="output-container">
+        <button onclick="navigator.clipboard.writeText(document.querySelector('pre').textContent)">Copy</button>
+        <button id="save-btn">Save</button>
+        <pre>No script found. Please upload a valid <b>script.json</b> file.</pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+}
+#content {
+    text-align: center;
+}
+
+#prompt-area {
+    display: inline-flex;
+}
+
+#prompt-area button {
+    margin: 4px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+pre {
+    border: 1px solid #ddd;
+    font-family: monospace;
+    white-space: pre-wrap;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#output-container {
+    margin: 7em;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: gray;
+}
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}

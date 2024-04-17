@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+
+    <title>Processor - Scheduler AI</title>
+</head>
+<script src="/scheduler/main.js" defer></script>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/scheduler">Scheduler</a>
+        <a href="/treatmentor">Treatmentor</a>
+    </div>
+
+    <div id="content">
+        <h1>Scheduler</h1>
+
+        <div id="prompt-area">
+            <textarea name="" id="prompt-textarea" cols="50" rows="5"></textarea>
+            <button id="run-prompt">Run</button>
+            <button id="file-button" onclick="document.getElementById('file-input').click()" >Upload</button>
+            <input id="file-input" type="file"></input>
+        </div>
+
+        <p id="error"></p>
+    </div>
+
+    <div id="output-container">
+        <pre>No script found. Please upload a valid <b>script.json</b> file.</pre>
+    </div>
+</body>
+</html>
