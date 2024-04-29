@@ -13,11 +13,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 8080;
 const scriptFilePath = path.join(__dirname, 'public', 'script.json');
 const treatmentFilePath = path.join(__dirname, 'public', 'treatment.txt');
 
-const upload = multer({storage: multer.memoryStorage() });
+const upload = multer({ storage: multer.memoryStorage() });
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -36,7 +36,7 @@ app.post('/run/treatmentor', async (req, res) => {
     }
 
 
-    const stream = await treatmentor.scriptToTreatment(scriptJson, { role:'user', content: `EXAMPLE(s): ${treatmentText}` })
+    const stream = await treatmentor.scriptToTreatment(scriptJson, { role: 'user', content: `EXAMPLE(s): ${treatmentText}` })
 
     for await (const chunk of stream) {
         const delta = (chunk.choices[0]?.delta?.content || "").replace(/\*/g, '')
@@ -55,7 +55,7 @@ app.post('/run/scheduler', async (req, res) => {
     let orderedScenes;
 
     if (!prompt) {
-        return res.status(400).json({ error: 'missing parameter "prompt"'})
+        return res.status(400).json({ error: 'missing parameter "prompt"' })
     }
 
     try {
@@ -77,7 +77,7 @@ app.post('/run/scheduler', async (req, res) => {
 
 app.post('/upload/json', upload.single('file'), async (req, res) => {
     if (!req.file) {
-        return res.status(400).json({error: 'No files were uploaded.'});
+        return res.status(400).json({ error: 'No files were uploaded.' });
     }
     const file = req.file.buffer;
 
@@ -87,7 +87,7 @@ app.post('/upload/json', upload.single('file'), async (req, res) => {
 
 app.post('/upload/txt', upload.single('file'), async (req, res) => {
     if (!req.file) {
-        return res.status(400).json({error: 'No files were uploaded.'});
+        return res.status(400).json({ error: 'No files were uploaded.' });
     }
     const file = req.file.buffer;
 
@@ -96,4 +96,4 @@ app.post('/upload/txt', upload.single('file'), async (req, res) => {
 })
 
 
-app.listen(port, 'localhost', () => { console.log(`http://localhost:${port}`); });
+app.listen(port, '0.0.0.0', () => { console.log(`http://0.0.0.0:${port}`); });

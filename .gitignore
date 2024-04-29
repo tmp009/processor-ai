@@ -1,5 +1,5 @@
 .env
-node_modules
+/app/node_modules
 
-/public/treatment.txt
-/public/script.json
+/app/public/treatment.txt
+/app/public/script.json
