@@ -1,0 +1,18 @@
+{
+	"elementBox": {
+		"element": {"x":140,"y":180},
+		"new": {"x":331,"y":177},
+		"insert":{"x":331,"y":233},
+		"find":{"x":331,"y":200},
+		"close":{"x":331,"y":302},
+		"item":{"x":124,"y":290},
+		"category":{"x":124,"y":197},
+		"categoryTop": {"x":117,"y":211}
+
+	},
+	"parentWindow":{
+		"sceneNumber": {"x":93,"y":172}
+	}
+
+	
+}
