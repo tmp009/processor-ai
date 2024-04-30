@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Processor - Script2MSD</title>
+</head>
+<script src="/script2msd/main.js" defer></script>
+<style>
+    #script-convert-div {
+        display: inline-block;
+        flex-wrap: wrap;
+
+        margin: 5em;
+        padding: 2em;
+        border: 1px solid #ddd;
+        font-family: monospace;
+        background-color: gray;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        padding-right: 10px; /* Adjust the padding value as needed */
+    }
+</style>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/scheduler">Scheduler</a>
+        <a href="/treatmentor">Treatmentor</a>
+        <a href="/script2msd">Script2MSD</a>
+    </div>
+
+    <div id="content">
+        <h1>Script2MSD</h1>
+
+        <div id="script-convert-div">
+            <h2>Convert txt/pdf file</h2>
+            <form>
+                <br>
+                <button id="file-button" onclick="document.getElementById('file-input').click()" >Upload File</button>
+                <input id="file-input" type="file" accept=".pdf, .txt" required></input>
+                <p id="filename" hidden></p>
+
+                <br>
+                <label for="email">Email: </label>
+                <input type="email" id="email" required>
+
+                <input type="checkbox" id="convert-pdf">
+                <label for="convert-pdf">PDF File</label>
+
+                <br>
+                <button id="convert-btn" disabled>Convert</button>
+            </form>
+
+        </div>
+
+
+        <p id="error"></p>
+    </div>
+</body>
+</html>
