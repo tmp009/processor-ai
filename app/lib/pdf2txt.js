@@ -7,7 +7,7 @@ async function pdf2Txt(filepath, outPath) {
     const blob = new Blob([await readFile(filepath)]);
     body.set("file", blob, 'data.pdf');
 
-    const res = await fetch(process.env.PDF_CONVERT_SERVICE, { body: body, method: 'POST' })
+    const res = await fetch(process.env.PDF_CONVERT_URL, { body: body, method: 'POST' })
 
     await writeFile(outPath, res.body)
 }

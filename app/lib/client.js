@@ -1,9 +1,16 @@
 module.exports = class RobotClient {
-    constructor(url, port, username='robot', password='') {
+    constructor(url, port=null, username='robot', password='') {
         if (!url.startsWith('http://') && !url.startsWith('https://')) {
             url = 'http://' + url;
+
         }
-        this.host = url + ':' + port;
+
+        if (port) {
+            this.host = url +':' + port;
+        } else {
+            this.host = url
+        }
+
         this.retries = 5;
         this.username = username;
         this.password = password;
