@@ -14,6 +14,10 @@ document.getElementById('run-prompt').addEventListener('click', async (e) => {
 
     const response = await fetch('/run/treatmentor', {
         method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ userPrompt: document.getElementById('user-prompt').value })
     });
 
     try {

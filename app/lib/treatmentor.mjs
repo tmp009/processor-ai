@@ -3,9 +3,9 @@ import { OpenAI } from 'openai';
 
 const openai = new OpenAI();
 
-async function scriptToTreatment(script, treatments) {
+async function scriptToTreatment(script, treatments, userPrompt=null) {
     const messages = [
-        {role:'system', content: 'You are film treatmentor. You will take example film treatments and a movie script then generate a film treatment for the script similar to the example treatments. Do not output markdown.'},
+        {role:'system', content: userPrompt || 'You are film treatmentor. You will take example film treatments and a movie script then generate a film treatment for the script similar to the example treatments. Do not output markdown.'},
         {role:'user', content: 'Treatments: ' + treatments},
         {role:'user', content: 'Script content: ' + script},
 

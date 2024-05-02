@@ -7,7 +7,11 @@
     <title>Processor - Treatmentor AI</title>
 </head>
 <script src="/treatmentor/main.js" defer></script>
-
+<style>
+    #user-prompt {
+        margin: 2rem 0rem 3rem 0;
+    }
+</style>
 <body>
     <div class="navbar">
         <a href="/">Home</a>
@@ -36,6 +40,8 @@
     <div id="output-container">
         <button onclick="navigator.clipboard.writeText(document.querySelector('pre').textContent)">Copy</button>
         <button id="save-btn">Save</button>
+        <br>
+        <textarea id="user-prompt" cols="100" rows="4">You are film treatmentor. You will take example film treatments and a movie script then generate a film treatment for the script similar to the example treatments. Do not output markdown.</textarea>
         <pre>No script found. Please upload a valid <b>script.json</b> file.</pre>
     </div>
 </body>

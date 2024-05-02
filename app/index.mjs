@@ -45,6 +45,8 @@ app.post('/run/treatmentor', async (req, res) => {
     let scriptJson;
     let treatmentText;
 
+    const userPrompt = req.body.userPrompt;
+
     try {
         scriptJson = treatmentor.jsonToString(JSON.parse(await fs.readFile(scriptFilePath)));
         treatmentText = await fs.readFile(treatmentFilePath);
@@ -53,7 +55,7 @@ app.post('/run/treatmentor', async (req, res) => {
     }
 
 
-    const stream = await treatmentor.scriptToTreatment(scriptJson, { role: 'user', content: `EXAMPLE(s): ${treatmentText}` })
+    const stream = await treatmentor.scriptToTreatment(scriptJson,  `EXAMPLE(s): ${treatmentText}`, userPrompt)
 
     for await (const chunk of stream) {
         const delta = (chunk.choices[0]?.delta?.content || "").replace(/\*/g, '')
@@ -138,8 +140,8 @@ app.post('/run/script2msd', uploadTmp.single('file'), async (req, res) => {
 
         await processScript(file, fileOutJson, false);
         await runRobot(
-          process.env.CONTROL_SERVER_MMS_HOST || 'host.docker.internal',
-          process.env.CONTROL_SERVER_MMS_PORT || 3000,
+          process.env.CONTROL_SERVER_MMS_URL || 'host.docker.internal',
+          process.env.CONTROL_SERVER_MMS_PORT,
           fileOutJson,
           fileOutMsd,
           false
