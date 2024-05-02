@@ -123,7 +123,7 @@ app.post('/run/script2msd', uploadTmp.single('file'), async (req, res) => {
         return res.status(400).json({ error: 'email key missing'})
     }
 
-    sendMail(email, 'Movie AI Script2Msd', 'Hello,\n\nYour movie script is being processed. You will receive an email once it\'s done.\n\nPlease do not reply. This is an automated email.')
+    await sendMail(email, 'Movie AI Script2Msd', 'Hello,\n\nYour movie script is being processed. You will receive an email once it\'s done.\n\nThis email has been sent to you automatically.')
 
     const file = req.file.path;
     const fileOutJson = req.file.path + '_out.json';
@@ -133,6 +133,9 @@ app.post('/run/script2msd', uploadTmp.single('file'), async (req, res) => {
         if (req.body.convertPdf) {
           await pdf2Txt(file, file)
         }
+
+        res.json({ status: 200 })
+
         await processScript(file, fileOutJson, false);
         await runRobot(
           process.env.CONTROL_SERVER_MMS_HOST || 'host.docker.internal',
@@ -153,8 +156,11 @@ app.post('/run/script2msd', uploadTmp.single('file'), async (req, res) => {
             }])
 
 
-        res.json({ status: 200 })
     } catch (error) {
+        console.error(error);
+
+        await sendMail(email, '[ERROR] Movie AI Script2Msd', 'Hello,\n\n We encountered an error when converting this file. Please try uploading the file again or contact this email for assistance.')
+
         return res.status(400).json({ error: error });
 
     } finally {

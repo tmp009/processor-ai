@@ -22,7 +22,7 @@
     }
 
     label {
-        padding-right: 10px; /* Adjust the padding value as needed */
+        padding-right: 10px;
     }
 </style>
 <body>
@@ -38,7 +38,7 @@
 
         <div id="script-convert-div">
             <h2>Convert txt/pdf file</h2>
-            <form>
+            <form id="convert-from">
                 <br>
                 <button id="file-button" onclick="document.getElementById('file-input').click()" >Upload File</button>
                 <input id="file-input" type="file" accept=".pdf, .txt" required></input>
@@ -58,7 +58,7 @@
         </div>
 
 
-        <p id="error"></p>
+        <p id="message"></p>
     </div>
 </body>
 </html>
